@@ -9,7 +9,7 @@ const TabsNavigator = () => {
         options={{
           title: "Messages",
           tabBarIcon: ({ size, color }) => (
-            <Ionicons name="chatbubbles-outline" size={size} color={color} />
+            <Ionicons name="chatbubbles" size={size} color={color} />
           ),
         }}
       />
@@ -18,7 +18,7 @@ const TabsNavigator = () => {
         options={{
           title: "Profile",
           tabBarIcon: ({ size, color }) => (
-            <Ionicons name="person-outline" size={size} color={color} />
+            <Ionicons name="person" size={size} color={color} />
           ),
         }}
       />

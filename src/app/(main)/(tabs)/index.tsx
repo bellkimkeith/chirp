@@ -1,11 +1,12 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet } from "react-native";
+import { ChannelList } from "stream-chat-expo";
+import { router } from "expo-router";
 
 const MainTab = () => {
   return (
-    <View>
-      <Text>MainTab</Text>
-    </View>
+    <ChannelList
+      onSelect={(channel) => router.push(`/channel/${channel.cid}`)}
+    />
   );
 };
 
