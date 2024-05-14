@@ -1,4 +1,4 @@
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Stack, useLocalSearchParams } from "expo-router";
 import { Channel as ChannelType } from "stream-chat";
@@ -21,7 +21,7 @@ const ChannelScreen = () => {
       setChannel(channels[0]);
     };
     fetchChannelByCid();
-  }, [cid]);
+  }, [cid, client]);
 
   return channel ? (
     <View style={styles.container}>

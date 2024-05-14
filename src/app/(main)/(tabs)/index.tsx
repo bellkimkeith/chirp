@@ -1,4 +1,3 @@
-import { StyleSheet } from "react-native";
 import { ChannelList } from "stream-chat-expo";
 import { router } from "expo-router";
 
@@ -11,5 +10,3 @@ const MainTab = () => {
 };
 
 export default MainTab;
-
-const styles = StyleSheet.create({});
