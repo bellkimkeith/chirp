@@ -1,7 +1,11 @@
-import { Tabs } from "expo-router";
+import { Redirect, Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { useAuth } from "../../../providers/AuthContextProvider";
 
 const TabsNavigator = () => {
+  const user = useAuth().user;
+
+  if (!user) return <Redirect href={"/(auth)/login"} />;
   return (
     <Tabs>
       <Tabs.Screen

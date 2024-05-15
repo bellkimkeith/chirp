@@ -1,5 +1,5 @@
-import { ChannelList } from "stream-chat-expo";
 import { router } from "expo-router";
+import { ChannelList } from "stream-chat-expo";
 
 const MainTab = () => {
   return (
