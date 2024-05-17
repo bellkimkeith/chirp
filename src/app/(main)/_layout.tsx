@@ -12,6 +12,7 @@ const MainLayout = () => {
       <Stack screenOptions={{ headerBackTitleVisible: false }}>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="channel" options={{ headerShown: false }} />
+        <Stack.Screen name="users" options={{ title: "Users" }} />
       </Stack>
     </ChatProvider>
   );
