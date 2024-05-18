@@ -25,11 +25,6 @@ const ChatProvider = ({ children }: PropsWithChildren) => {
         client.devToken(profile.id)
       );
       setIsReady(true);
-
-      // const channel = client.channel("messaging", "bajijay", {
-      //   name: "bajijay",
-      // });
-      // await channel.watch();
     };
 
     connect();

@@ -91,13 +91,15 @@ export default function Account() {
           <Avatar
             size={200}
             url={avatarUrl}
-            onUpload={(url: string) => {
+            onUpload={async (url: string) => {
+              setLoading(true);
               setAvatarUrl(url);
-              updateProfile({
+              await updateProfile({
                 username,
                 avatar_url: url,
                 full_name: fullName,
               });
+              setLoading(false);
             }}
             isEditing={isEditing}
           />

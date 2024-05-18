@@ -25,7 +25,7 @@ const ChannelScreen = () => {
 
   return channel ? (
     <View style={styles.container}>
-      <Stack.Screen options={{ title: "" || channel.id }} />
+      <Stack.Screen options={{ title: "Messages" }} />
       <Channel channel={channel}>
         <MessageList />
         <SafeAreaView edges={["bottom"]}>
