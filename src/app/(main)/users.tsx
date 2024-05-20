@@ -11,6 +11,7 @@ import UserListItem from "../../components/UserListItem";
 
 const UsersScreen = () => {
   const { data: users, isFetching, error } = useGetProfiles();
+  const filteredUsers = users.filter((user) => user.full_name !== "");
 
   if (isFetching) return <ActivityIndicator />;
 
@@ -24,7 +25,7 @@ const UsersScreen = () => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={users}
+        data={filteredUsers}
         contentContainerStyle={{ gap: 10 }}
         renderItem={({ item }) => <UserListItem user={item} />}
       />
