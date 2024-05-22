@@ -5,19 +5,35 @@ import {
   Text,
   View,
 } from "react-native";
-import React from "react";
 import { useGetProfiles } from "../../api/profile";
 import UserListItem from "../../components/UserListItem";
 
 const UsersScreen = () => {
   const { data: users, isFetching, error } = useGetProfiles();
-  const filteredUsers = users.filter((user) => user.full_name !== "");
+  const filteredUsers =
+    users &&
+    users.filter((user) => {
+      if (
+        user.full_name !== "" &&
+        user.full_name !== undefined &&
+        user.full_name !== null
+      ) {
+        return user;
+      }
+    });
 
   if (isFetching) return <ActivityIndicator />;
 
-  if (error)
+  if (error || filteredUsers.length === 0)
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, { justifyContent: "center" }]}>
+        <Text style={styles.emptyText}>No users</Text>
+      </View>
+    );
+
+  if (filteredUsers.length === 0)
+    return (
+      <View style={[styles.container, { justifyContent: "center" }]}>
         <Text style={styles.emptyText}>No users</Text>
       </View>
     );
@@ -26,7 +42,9 @@ const UsersScreen = () => {
     <View style={styles.container}>
       <FlatList
         data={filteredUsers}
-        contentContainerStyle={{ gap: 10 }}
+        contentContainerStyle={{
+          gap: 10,
+        }}
         renderItem={({ item }) => <UserListItem user={item} />}
       />
     </View>

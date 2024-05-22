@@ -13,19 +13,23 @@ type AuthContextType = {
   session: Session | null;
   user: User | null;
   profile: any | null;
+  loading: boolean;
 };
 
 const AuthContext = createContext<AuthContextType>({
   session: null,
   user: null,
   profile: null,
+  loading: false,
 });
 
 const AuthContextProvider = ({ children }: PropsWithChildren) => {
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<any | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    setLoading(true);
     const fetchSession = async () => {
       const {
         data: { session },
@@ -48,9 +52,11 @@ const AuthContextProvider = ({ children }: PropsWithChildren) => {
         setProfile(null);
       }
       fetchSession();
+      setLoading(false);
     });
 
     fetchSession();
+    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -86,7 +92,9 @@ const AuthContextProvider = ({ children }: PropsWithChildren) => {
   }, [session?.user]);
 
   return (
-    <AuthContext.Provider value={{ session, user: session?.user, profile }}>
+    <AuthContext.Provider
+      value={{ session, user: session?.user, profile, loading }}
+    >
       {children}
     </AuthContext.Provider>
   );
